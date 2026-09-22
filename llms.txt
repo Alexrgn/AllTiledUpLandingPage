@@ -9,11 +9,15 @@
 - Supports layered terrain, elevation, ramps, caves, stamps, and prefabs.
 - Imports and analyzes existing tilesets and sprite sheets.
 - Exports PNG renders, Tiled/TMX data, JSON, and engine-oriented workflows including Godot and Unity.
+- Includes live water simulation, a voxel sandbox, 2.5D wall tools, platformer level building, and hexcrawl/VTT map workflows.
 - Supports touch-friendly editing and local-first core workflows.
 
 ## Official pages
 
 - Landing page: https://alexrgn.github.io/All-Tiled-Up/
+- itch.io page and browser build: https://ploovius.itch.io/all-tiled-up
+- Google Play: https://play.google.com/store/apps/details?id=com.pluvial.alltiledup
+- Discord community: https://discord.gg/FxdmwJrYqa
 - Source and documentation: https://github.com/Alexrgn/All-Tiled-Up
 - Privacy policy: https://alexrgn.github.io/All-Tiled-Up/privacy-policy.html
 
