@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0e11">
+  <meta name="description" content="All Tiled Up is a procedural tileset generator and autotile map editor for game developers and pixel artists.">
+  <link rel="canonical" href="https://alexrgn.github.io/All-Tiled-Up/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="All Tiled Up — Procedural Tilesets and Autotile Maps">
+  <meta property="og:description" content="Generate tilesets, paint autotiling maps, and export game-ready assets for your workflow.">
+  <meta property="og:url" content="https://alexrgn.github.io/All-Tiled-Up/">
+  <meta property="og:site_name" content="All Tiled Up">
+  <meta name="twitter:card" content="summary">
+  <title>All Tiled Up — Procedural Tilesets and Autotile Maps</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0e11;
+      --panel: #14181e;
+      --panel-2: #1a2028;
+      --text: #eef1f5;
+      --muted: #a6afbb;
+      --line: #2a323d;
+      --accent: #facc15;
+      --accent-2: #fb923c;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent); }
+    a:hover { color: #fde68a; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    header { border-bottom: 1px solid var(--line); }
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand { color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: .02em; }
+    .brand-mark { color: var(--accent); margin-right: .45rem; }
+    nav ul { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; list-style: none; padding: 0; margin: 0; }
+    nav a { text-decoration: none; color: var(--muted); font-size: .95rem; }
+    nav a:hover { color: var(--text); }
+    .hero { padding: clamp(4rem, 10vw, 8rem) 0 5rem; }
+    .eyebrow { color: var(--accent); font-weight: 750; letter-spacing: .11em; text-transform: uppercase; font-size: .78rem; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -.025em; }
+    h1 { max-width: 820px; margin: 1rem 0 1.25rem; font-size: clamp(2.8rem, 7vw, 5.8rem); }
+    h2 { margin: 0 0 1rem; font-size: clamp(1.9rem, 4vw, 3rem); }
+    h3 { margin: 0 0 .55rem; font-size: 1.2rem; }
+    .lead { max-width: 720px; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.35rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .button { display: inline-block; border: 1px solid var(--accent); border-radius: .65rem; padding: .72rem 1rem; text-decoration: none; font-weight: 750; }
+    .button.primary { background: var(--accent); color: #18181b; }
+    .button.secondary { border-color: var(--line); color: var(--text); background: var(--panel); }
+    .button:hover { transform: translateY(-1px); }
+    .tile-strip { display: grid; grid-template-columns: repeat(12, 1fr); gap: .35rem; margin: 3rem 0 0; max-width: 760px; }
+    .tile { aspect-ratio: 1; border: 1px solid #394350; background: #202832; }
+    .tile:nth-child(3n) { background: #7c4a2d; }
+    .tile:nth-child(4n) { background: #315b4c; }
+    .tile:nth-child(5n) { background: #6b5a27; }
+    .tile:nth-child(7n) { background: #443d73; }
+    section { padding: 5rem 0; border-top: 1px solid var(--line); }
+    .section-intro { max-width: 700px; color: var(--muted); margin-bottom: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: .9rem; padding: 1.35rem; }
+    .card p { color: var(--muted); margin: 0; }
+    .number { color: var(--accent-2); font-weight: 800; font-size: .85rem; }
+    .workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; counter-reset: step; }
+    .workflow .card { position: relative; padding-top: 3.2rem; }
+    .workflow .card::before { counter-increment: step; content: counter(step); position: absolute; top: 1.1rem; left: 1.35rem; width: 1.45rem; height: 1.45rem; display: grid; place-items: center; border-radius: 50%; background: var(--accent); color: #18181b; font-weight: 800; font-size: .82rem; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fact { border-left: 3px solid var(--accent); padding: .15rem 0 .15rem 1rem; }
+    .fact strong { display: block; }
+    .fact span { color: var(--muted); }
+    details { border-top: 1px solid var(--line); padding: 1rem 0; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; font-weight: 750; }
+    details p { max-width: 780px; color: var(--muted); }
+    footer { padding: 2.5rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .92rem; }
+    footer p { margin: .35rem 0; }
+    @media (max-width: 780px) {
+      nav { align-items: flex-start; padding: 1rem 0; flex-direction: column; }
+      .grid, .workflow, .facts { grid-template-columns: 1fr; }
+      .tile-strip { grid-template-columns: repeat(8, 1fr); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "All Tiled Up",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Android, Windows, Web",
+    "description": "A procedural tileset generator and autotile map editor for game developers and pixel artists.",
+    "url": "https://alexrgn.github.io/All-Tiled-Up/",
+    "author": { "@type": "Organization", "name": "Pluvian Dev" },
+    "isAccessibleForFree": true,
+    "featureList": [
+      "Procedural tileset generation",
+      "Autotile map painting",
+      "Wang, Blob, Corner, and ISO tile workflows",
+      "Tileset import and analysis",
+      "PNG, Tiled, Godot, Unity, and other export workflows",
+      "Offline editing with local project storage"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="./"><span class="brand-mark">◆</span>All Tiled Up</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="privacy-policy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow">Procedural map forge for game makers</p>
+        <h1 id="hero-title">Build tile worlds without starting from a blank grid.</h1>
+        <p class="lead">All Tiled Up is a procedural tileset generator and autotile map editor for game developers and pixel artists. Generate materials, paint maps, inspect tilesets, and export assets for your existing workflow.</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/Alexrgn/All-Tiled-Up">View the project</a>
+          <a class="button secondary" href="#features">Explore features</a>
+        </div>
+        <div class="tile-strip" aria-label="Decorative tile pattern">
+          <span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span><span class="tile"></span>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title">One workspace for the tile pipeline</h2>
+        <p class="section-intro">Use the editor to move from procedural material ideas to hand-authored maps and engine-ready exports. The feature descriptions below reflect the current project documentation.</p>
+        <div class="grid">
+          <article class="card"><h3>Procedural materials</h3><p>Generate substrates from seeds, frequency, palette controls, archetypes, and world presets. Tune the look before you start painting.</p></article>
+          <article class="card"><h3>Autotile painting</h3><p>Paint terrain while the selected rules choose edge, corner, and transition tiles. Work with Wang, Blob, Corner, ISO, and other formats.</p></article>
+          <article class="card"><h3>Multi-terrain maps</h3><p>Build layered maps with terrain, structures, elevation, ramps, caves, stamps, and prefabs instead of treating every tile as an isolated square.</p></article>
+          <article class="card"><h3>Import and analyze</h3><p>Bring in hand-drawn or generated textures, clean palettes, make them seamless, and inspect existing sprite sheets for tile rules.</p></article>
+          <article class="card"><h3>Game-engine exports</h3><p>Export PNG renders, Tiled/TMX data, JSON, and engine-oriented packages for workflows including Godot, Unity, RPG Maker, and more.</p></article>
+          <article class="card"><h3>Designed for touch</h3><p>Use pinch zoom, two-finger panning, swipeable controls, larger tap targets, and mobile-friendly navigation on supported builds.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" aria-labelledby="workflow-title">
+      <div class="wrap">
+        <h2 id="workflow-title">A practical asset workflow</h2>
+        <p class="section-intro">Start broad, then take control where your map needs it. All Tiled Up is built around a repeatable loop rather than a single art style.</p>
+        <div class="workflow">
+          <article class="card"><span class="number">START</span><h3>Forge a material</h3><p>Choose an archetype or preset, then adjust its palette and procedural parameters.</p></article>
+          <article class="card"><span class="number">AUTHOR</span><h3>Paint the map</h3><p>Use autotiling, layers, height, caves, and stamps to shape a playable space.</p></article>
+          <article class="card"><span class="number">CHECK</span><h3>Verify the result</h3><p>Inspect transitions and reconstruction behavior before sending the asset to your engine.</p></article>
+          <article class="card"><span class="number">EXPORT</span><h3>Keep building</h3><p>Export the format your project needs and continue development in your preferred toolchain.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="facts-title">
+      <div class="wrap">
+        <h2 id="facts-title">Built around your projects</h2>
+        <div class="facts">
+          <div class="fact"><strong>Local-first editing</strong><span>Core maps, materials, and settings are stored on your device. No account is required for core features.</span></div>
+          <div class="fact"><strong>Multiple platforms</strong><span>The project includes web/PWA, Android, and desktop-oriented workflows.</span></div>
+          <div class="fact"><strong>Flexible output</strong><span>Use rendered images, structured map data, or engine-specific export workflows depending on your project.</span></div>
+          <div class="fact"><strong>Open project documentation</strong><span>Review the source, release notes, and implementation details on GitHub.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <h2 id="faq-title">Questions about All Tiled Up</h2>
+        <details><summary>What is All Tiled Up?</summary><p>All Tiled Up is a procedural tileset generator and map-painting tool for creating autotile-ready game assets. It combines material generation, manual painting, tileset analysis, and export tools.</p></details>
+        <details><summary>Who is it for?</summary><p>It is designed for game developers, level designers, pixel artists, and hobbyists who need to create or test tile-based terrain and maps.</p></details>
+        <details><summary>Can I use it with Godot, Unity, or Tiled?</summary><p>The project includes export workflows for PNG, Tiled/TMX, JSON, and engine-oriented formats including Godot and Unity. Check the current project documentation for the latest export details.</p></details>
+        <details><summary>Does it work offline?</summary><p>The editor is designed to work offline for core editing. Some platform-specific features, such as updates, rewarded ads, or purchases, may require an internet connection.</p></details>
+        <details><summary>Where can I find the source and updates?</summary><p>The official source and project documentation are available on <a href="https://github.com/Alexrgn/All-Tiled-Up">GitHub</a>.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>All Tiled Up</strong> — procedural tilesets, autotile maps, and game-ready exports.</p>
+      <p><a href="https://github.com/Alexrgn/All-Tiled-Up">GitHub</a> · <a href="privacy-policy.html">Privacy policy</a> · Last updated September 2026</p>
+    </div>
+  </footer>
+</body>
+</html>
