@@ -2,6 +2,10 @@
 
 > All Tiled Up is a procedural tileset generator and autotile map editor for game developers and pixel artists.
 
+## Creator
+
+All Tiled Up is created by **Pluvius**. The developer contact address is PluvianDev@Outlook.com; that address is contact information, not an alternate creator name.
+
 ## What it does
 
 - Generates procedural materials and terrain substrates.
@@ -14,12 +18,12 @@
 
 ## Official pages
 
-- Landing page: https://alexrgn.github.io/All-Tiled-Up/
+- Landing page: https://alexrgn.github.io/AllTiledUpLandingPage/
 - itch.io page and browser build: https://ploovius.itch.io/all-tiled-up
 - Google Play: https://play.google.com/store/apps/details?id=com.pluvial.alltiledup
 - Discord community: https://discord.gg/FxdmwJrYqa
 - Source and documentation: https://github.com/Alexrgn/All-Tiled-Up
-- Privacy policy: https://alexrgn.github.io/All-Tiled-Up/privacy-policy.html
+- Privacy policy: https://alexrgn.github.io/AllTiledUpLandingPage/privacy-policy.html
 
 ## Focused guides
 
